@@ -51,9 +51,4 @@ router.post(
   }
 );
 
-// Login a user
-// router.get("/", (req, res) => {
-//   res.send("Log a user in");
-// });
-
 module.exports = router;
