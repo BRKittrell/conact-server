@@ -26,5 +26,18 @@
   background: var(--highlight);
 }
 
-.radio {
+.clearBtn {
+  background: red;
+  margin-top: 0.5rem;
+  padding: 0.7rem;
+  font-size: 1.5rem;
+  text-align: center;
+  color: var(--white);
+  background: var(--highlight);
+  transition: background 0.5s ease;
+}
+
+.clearBtn:hover {
+  cursor: pointer;
+  background: rgba(255, 0, 0);
 }

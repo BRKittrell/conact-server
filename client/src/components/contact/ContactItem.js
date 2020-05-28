@@ -1,8 +1,17 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
+import ContactContext from "../../context/contact/contactContext";
 import "./ContactItem.css";
+import { SET_CURRENT } from "../../context/types";
 
 const ContactItem = ({ contact }) => {
+  const contactContext = useContext(ContactContext);
   const { id, name, email, type, phone } = contact;
+  const { deleteContact, setCurrent, clearCurrent } = contactContext;
+
+  const onDelete = () => {
+    deleteContact(id);
+    clearCurrent();
+  };
 
   return (
     <div className="contactCard">
@@ -13,8 +22,12 @@ const ContactItem = ({ contact }) => {
         <li className="contactEmail">{email}</li>
       </ul>
       <div>
-        <div className="contactBtn">Edit</div>
-        <div className="contactBtn">Delete</div>
+        <div className="contactBtn" onClick={() => setCurrent(contact)}>
+          Edit
+        </div>
+        <div className="contactBtn" onClick={onDelete}>
+          Delete
+        </div>
       </div>
     </div>
   );
