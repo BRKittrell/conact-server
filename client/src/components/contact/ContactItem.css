@@ -1,0 +1,49 @@
+.contactCard {
+  background: #dcdcdc;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.badge {
+  float: right;
+  color: var(--white);
+  padding: 0.5rem;
+}
+
+.personal {
+  background: green;
+}
+
+.professional {
+  background: red;
+}
+
+.contactCard ul li {
+  list-style: none;
+}
+
+.contactName {
+  font-size: 2rem;
+}
+
+.contactPhone {
+  font-style: italic;
+}
+
+.contactEmail {
+  margin-bottom: 0.6rem;
+}
+
+.contactBtn {
+  display: inline;
+  background: var(--black);
+  color: var(--white);
+  padding: 0.3rem;
+  margin-right: 0.3rem;
+  transition: opacity 0.5s ease;
+}
+
+.contactBtn:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
