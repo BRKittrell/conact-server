@@ -9,11 +9,14 @@ import {
   SET_CURRENT,
   CLEAR_CURRENT,
   UPDATE_CONTACT,
+  FILTER_CONTACTS,
+  CLEAR_FILTER,
 } from "../types";
 
 const ContactState = (props) => {
   const initialState = {
     current: null,
+    filtered: null,
     contacts: [
       {
         id: 1,
@@ -65,16 +68,29 @@ const ContactState = (props) => {
     dispatch({ type: UPDATE_CONTACT, payload: contact });
   };
 
+  // Filter contacts
+  const filterContacts = (text) => {
+    dispatch({ type: FILTER_CONTACTS, payload: text });
+  };
+
+  // Clear filter
+  const clearFilter = () => {
+    dispatch({ type: CLEAR_FILTER });
+  };
+
   return (
     <ContactContext.Provider
       value={{
         contacts: state.contacts,
         current: state.current,
+        filtered: state.filtered,
         addContact,
         deleteContact,
         setCurrent,
         clearCurrent,
         updateContact,
+        clearFilter,
+        filterContacts,
       }}
     >
       {props.children}

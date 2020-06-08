@@ -1,0 +1,53 @@
+.formContainer {
+  max-width: 600px;
+  margin: auto;
+  margin-top: 5rem;
+}
+
+.formTitle {
+  text-align: center;
+  font-size: 4rem;
+  border-bottom: 1px solid var(--highlight);
+  margin-bottom: 1rem;
+}
+
+.formTitleHighlight {
+  color: var(--highlight);
+  font-style: italic;
+}
+
+.formLabel {
+  display: block;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.formInput {
+  display: block;
+  width: 100%;
+  font-size: 1.5rem;
+  padding: 0;
+  border: none;
+  border: 1px solid var(--black);
+  margin-bottom: 1rem;
+  padding: 0.4rem;
+}
+
+.formInput:focus {
+  outline: none;
+}
+
+.formSubmit {
+  display: block;
+  width: 100%;
+  background: var(--black);
+  color: var(--white);
+  font-size: 2rem;
+  transition: background 0.5s ease;
+  margin-top: 2rem;
+}
+
+.formSubmit:hover {
+  cursor: pointer;
+  background: var(--highlight);
+}

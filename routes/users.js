@@ -22,7 +22,13 @@ router.post(
     try {
       const { name, email, password } = req.body;
 
-      const user = new User({
+      let user = await User.findOne({ email });
+
+      if (user) {
+        return res.status(400).json({ msg: "User already exists." });
+      }
+
+      user = new User({
         name: name,
         email: email,
         password: password,
@@ -46,7 +52,7 @@ router.post(
       });
     } catch (error) {
       console.error(error.message);
-      res.status(500).json({ msg: "Server error." });
+      res.status(500).json({ msg: "Server error in the post of users" });
     }
   }
 );

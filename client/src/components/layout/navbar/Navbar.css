@@ -6,6 +6,15 @@
   padding: 1rem;
 }
 
+.logo {
+  font-size: 2rem;
+}
+
+.logoSpan {
+  font-style: italic;
+  font-weight: bold;
+}
+
 .navbar h1 {
   font-size: 3rem;
 }
