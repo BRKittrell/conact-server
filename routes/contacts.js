@@ -31,7 +31,7 @@ router.post(
 
     try {
       const { name, phone, email, type } = req.body;
-      const contact = await new Contact({
+      const newContact = await new Contact({
         name,
         phone,
         email,
@@ -39,7 +39,7 @@ router.post(
         user: req.user.id,
       });
 
-      await contact.save();
+      const contact = await newContact.save();
       res.json(contact);
     } catch (err) {
       console.error(err);
@@ -66,7 +66,7 @@ router.put("/:id", auth, async (req, res) => {
 
     // Make sure that the signed in user owns the contact
     if (contact.user.toString() !== req.user.id) {
-      return res.status(401).json({ msg: "Fuck you" });
+      return res.status(401).json({ msg: "Unauthorized" });
     }
 
     contact = await Contact.findByIdAndUpdate(
