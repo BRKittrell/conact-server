@@ -1,13 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
-const Navbar = () => {
+const Navbar = ({ title }) => {
   return (
     <div className="navbar">
-      <div className="logo">
-        Contact<span className="logoSpan">Keeper</span>
-      </div>
+      <div className="logo">{title}</div>
       <ul>
         <Link to="/" className="li">
           Home
@@ -24,6 +23,14 @@ const Navbar = () => {
       </ul>
     </div>
   );
+};
+
+Navbar.propTypes = {
+  title: PropTypes.string.isRequired,
+};
+
+Navbar.defaultProps = {
+  title: "Contact Keeper",
 };
 
 export default Navbar;
