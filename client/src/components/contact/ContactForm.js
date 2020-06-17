@@ -28,7 +28,7 @@ const ContactForm = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (current) {
+    if (current !== null) {
       updateContact(contact);
       clearCurrent();
     } else {
