@@ -1,7 +1,6 @@
-import React, { Fragment, useContext } from "react";
+import React, { useContext } from "react";
 import ContactContext from "../../context/contact/contactContext";
 import "./ContactItem.css";
-import { SET_CURRENT } from "../../context/types";
 
 const ContactItem = ({ contact }) => {
   const contactContext = useContext(ContactContext);

@@ -3,20 +3,24 @@ import AlertContext from "../../../context/alert/alertContext";
 import AuthContext from "../../../context/auth/authContext";
 import "./Register.css";
 
-const Login = () => {
+const Register = (props) => {
   const alertContext = useContext(AlertContext);
   const authContext = useContext(AuthContext);
 
-  const { registerUser, error, clearErrors } = authContext;
+  const { registerUser, error, clearErrors, isAuthenticated } = authContext;
 
   const { setAlert } = alertContext;
 
   useEffect(() => {
+    if (isAuthenticated) {
+      props.history.push("/");
+    }
     if (error !== null) {
       setAlert(error);
       clearErrors();
     }
-  }, [error]);
+    // eslint-disable-next-line
+  }, [error, isAuthenticated, props.history]);
 
   const [user, setUser] = useState({
     name: "",
@@ -28,7 +32,6 @@ const Login = () => {
 
   const onChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
-    console.log(user);
   };
 
   const onSubmit = (e) => {
@@ -109,4 +112,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

@@ -3,7 +3,6 @@ import alertReducer from "./alertReducer";
 import { v4 as uuidv4 } from "uuid";
 import AlertContext from "./alertContext";
 import { SET_ALERT, REMOVE_ALERT } from "../types";
-import { PromiseProvider } from "mongoose";
 
 const AlertState = (props) => {
   const initialState = [];
