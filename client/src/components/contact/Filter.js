@@ -3,6 +3,7 @@ import ContactContext from "../../context/contact/contactContext";
 import "./Filter.css";
 
 const Filter = () => {
+  // Bring in useRef
   const text = useRef("");
 
   const contactContext = useContext(ContactContext);
