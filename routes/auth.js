@@ -17,7 +17,7 @@ router.post(
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(402).json({ errors: errors.array() });
+      return res.status(400).json({ errors: errors.array() });
     }
 
     const { email, password } = req.body;
@@ -25,13 +25,17 @@ router.post(
       let user = await User.findOne({ email });
 
       if (!user) {
-        res.status(400).json({ msg: "Invalid credentials..." });
+        res
+          .status(400)
+          .json({ msg: "Invalid credentials... Email is not in DB." });
       }
 
       const isMatch = await bcrypt.compare(password, user.password);
 
       if (!isMatch) {
-        return res.status(400).json({ msg: "Invalid credentials..." });
+        return res
+          .status(400)
+          .json({ msg: "Invalid credentials... Password is wrong." });
       }
 
       const payload = {

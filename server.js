@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 5000;
 const connectDb = require("./config/db");
+// Allows us to parse json data form the req
 app.use(express.json({ extended: false }));
 connectDb();
 
