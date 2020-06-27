@@ -16,16 +16,16 @@ import {
 
 const AuthState = (props) => {
   const initialState = {
-    user: null,
-    isAuthenticated: null,
-    error: null,
-    loading: true,
     token: localStorage.getItem("token"),
+    isAuthenticated: null,
+    loading: true,
+    error: null,
+    user: null,
   };
 
   const [state, dispatch] = useReducer(authReducer, initialState);
 
-  // Load User
+  // Load User - hits te auth :get end point and gets the whole user
   const loadUser = async () => {
     // Place token from local storage into global / seperate file.
     if (localStorage.token) {
