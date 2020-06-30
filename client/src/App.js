@@ -9,6 +9,7 @@ import Register from "./components/layout/register/Register";
 import AlertState from "./context/alert/AlertState";
 import Alert from "./components/alert/Alert";
 import setAuthToken from "./utils/setAuthToken";
+import PrivateRoute from "./components/routing/PrivateRoute";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import "./App.css";
@@ -28,7 +29,7 @@ const App = () => {
               <div className="container">
                 <Alert />
                 <Switch>
-                  <Route exact path="/" component={Home}></Route>
+                  <PrivateRoute exact path="/" component={Home}></PrivateRoute>
                   <Route exact path="/about" component={About}></Route>
                   <Route exact path="/register" component={Register}></Route>
                   <Route exact path="/login" component={Login}></Route>
