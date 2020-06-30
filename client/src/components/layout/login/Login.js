@@ -1,9 +1,25 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./Login.css";
 import AlertContext from "../../../context/alert/alertContext";
-const Login = () => {
+import AuthContext from "../../../context/auth/authContext";
+import { PromiseProvider } from "mongoose";
+
+const Login = (props) => {
+  const authContext = useContext(AuthContext);
+  const { isAuthenticated, error, login, clearErrors } = authContext;
   const alertContext = useContext(AlertContext);
   const { setAlert } = alertContext;
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      props.history.push("/");
+    }
+    if (error !== null) {
+      setAlert(error);
+      clearErrors();
+    }
+    // eslint-disable-next-line
+  }, [error, isAuthenticated, props.history]);
 
   const [user, setUser] = useState({
     email: "",
@@ -13,7 +29,6 @@ const Login = () => {
 
   const onChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
-    console.log(user);
   };
 
   const onSubmit = (e) => {
@@ -21,7 +36,10 @@ const Login = () => {
     if (email === "" || password === "") {
       setAlert("Please fill out all fields.");
     } else {
-      console.log("submitted, thank you...");
+      login({
+        email,
+        password,
+      });
     }
   };
   return (
