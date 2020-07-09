@@ -25,7 +25,7 @@ router.post(
       let user = await User.findOne({ email });
 
       if (!user) {
-        res
+        return res
           .status(400)
           .json({ msg: "Invalid credentials... Email is not in DB." });
       }

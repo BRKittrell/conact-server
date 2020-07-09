@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import "./Login.css";
 import AlertContext from "../../../context/alert/alertContext";
 import AuthContext from "../../../context/auth/authContext";
-import { PromiseProvider } from "mongoose";
+// import { PromiseProvider } from "mongoose";
 
 const Login = (props) => {
   const authContext = useContext(AuthContext);

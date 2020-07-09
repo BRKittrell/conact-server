@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { check, validationResult } = require("express-validator");
 const Contact = require("../models/Contacts");
-const Users = require("../models/Users");
+
 const auth = require("../middleware/auth");
 
 // Get all contacts for a signed in user

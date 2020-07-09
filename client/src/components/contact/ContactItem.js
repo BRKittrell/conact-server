@@ -17,8 +17,12 @@ const ContactItem = ({ contact }) => {
       <span className={`badge ${type}`}>{type}</span>
       <ul>
         <li className="contactName">{name}</li>
-        <li className="contactPhone">{phone}</li>
-        <li className="contactEmail">{email}</li>
+        <li className="contactPhone">
+          <i className="fas fa-phone"></i> {phone}
+        </li>
+        <li className="contactEmail">
+          <i className="fas fa-envelope"></i> {email}
+        </li>
       </ul>
       <div>
         <div className="contactBtn" onClick={() => setCurrent(contact)}>

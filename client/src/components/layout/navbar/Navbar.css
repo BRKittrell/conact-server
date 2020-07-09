@@ -16,6 +16,10 @@
   list-style: none;
 }
 
+#logoutRef {
+  font-style: italic;
+}
+
 #logout a {
   text-decoration: none;
   color: #f4f4f4;
@@ -27,6 +31,7 @@
 }
 
 #userName {
+  font-size: 1.5rem;
 }
 
 .logoSpan {

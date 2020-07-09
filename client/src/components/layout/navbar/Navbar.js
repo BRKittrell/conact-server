@@ -16,11 +16,11 @@ const Navbar = ({ title }) => {
   const authLinks = (
     <Fragment>
       <p id="userName">
-        Hello {user && `${user.name[0].toUpperCase()}${user.name.slice(1)} ->`}
+        Hello {user && `${user.name[0].toUpperCase()}${user.name.slice(1)}`}
       </p>
       <li id="logout">
-        <a onClick={onLogout} href="#!">
-          Log out
+        <a onClick={onLogout} href="#!" id="logoutRef">
+          <i className="fas fa-paper-plane" />
         </a>
       </li>
     </Fragment>
@@ -39,7 +39,11 @@ const Navbar = ({ title }) => {
 
   return (
     <div className="navbar">
-      <div className="logo">{title}</div>
+      <div className="logo">
+        <i className="fas fa-id-card"></i>
+        {` `}
+        {title}
+      </div>
       <ul>{isAuthenticated ? authLinks : guestLinks}</ul>
     </div>
   );
