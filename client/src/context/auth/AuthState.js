@@ -28,9 +28,7 @@ const AuthState = (props) => {
   // Load User - hits te auth :get end point and gets the whole user
   const loadUser = async () => {
     // Place token from local storage into global / seperate file.
-    if (localStorage.token) {
-      setAuthToken(localStorage.token);
-    }
+    setAuthToken(localStorage.token);
     try {
       const res = await axios.get("/api/auth");
       // Res.data is the actual user data
@@ -78,8 +76,8 @@ const AuthState = (props) => {
     }
   };
   // Logout
-  const logOut = () => {
-    dispatch({ type: LOGOUT });
+  const logOut = (msg) => {
+    dispatch({ type: LOGOUT, payload: msg });
   };
   // Clear Errors
   const clearErrors = () => {

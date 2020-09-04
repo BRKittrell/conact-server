@@ -41,3 +41,10 @@
   cursor: pointer;
   background: rgba(255, 0, 0);
 }
+
+@media (max-width: 500px) {
+  .formField {
+    margin: 2rem 0;
+    border: 1px solid var(--black);
+  }
+}

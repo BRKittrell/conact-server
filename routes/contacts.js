@@ -31,7 +31,7 @@ router.post(
 
     try {
       const { name, phone, email, type } = req.body;
-      const newContact = await new Contact({
+      const newContact =   new Contact({
         name,
         phone,
         email,

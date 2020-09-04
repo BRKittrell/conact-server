@@ -8,15 +8,11 @@ import Login from "./components/layout/login/Login";
 import Register from "./components/layout/register/Register";
 import AlertState from "./context/alert/AlertState";
 import Alert from "./components/alert/Alert";
-import setAuthToken from "./utils/setAuthToken";
+
 import PrivateRoute from "./components/routing/PrivateRoute";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import "./App.css";
-
-if (localStorage.token) {
-  setAuthToken(localStorage.token);
-}
 
 const App = () => {
   return (

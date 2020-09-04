@@ -14,7 +14,7 @@ const ContactForm = () => {
   const { addContact, current, updateContact, clearCurrent } = contactContext;
 
   useEffect(() => {
-    if (current !== null) {
+    if (current) {
       setContact(current);
     } else {
       setContact({

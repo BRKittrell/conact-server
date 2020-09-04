@@ -8,3 +8,12 @@
 .filterInput:focus {
   outline: none;
 }
+
+@media (max-width: 500px) {
+  .filterInput {
+    margin: 1rem 0;
+    width: 100%;
+    font-size: 1.5rem;
+    padding: 0.3rem;
+  }
+}
