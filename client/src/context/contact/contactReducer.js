@@ -6,14 +6,27 @@ import {
   UPDATE_CONTACT,
   CLEAR_FILTER,
   FILTER_CONTACTS,
+  LOAD_CONTACTS,
+  CLEAR_CONTACTS,
 } from "../types";
 
 export default (state, action) => {
   switch (action.type) {
+    case CLEAR_CONTACTS:
+      return {
+        ...state,
+        contacts: null,
+      };
     case ADD_CONTACT:
       return {
         ...state,
-        contacts: [...state.contacts, action.payload],
+        contacts: [action.payload, ...state.contacts],
+      };
+    case LOAD_CONTACTS:
+      return {
+        ...state,
+        contacts: action.payload,
+        loading: false,
       };
     case CLEAR_CURRENT:
       return {
@@ -29,8 +42,9 @@ export default (state, action) => {
       return {
         ...state,
         contacts: state.contacts.filter((contact) => {
-          return contact.id !== action.payload;
+          return contact._id !== action.payload;
         }),
+        loading: false,
       };
     case CLEAR_FILTER:
       return {
@@ -43,17 +57,16 @@ export default (state, action) => {
         ...state,
         filtered: state.contacts.filter((contact) => {
           const regex = new RegExp(`${action.payload}`, "gi");
-          if (contact.name.match(regex) || contact.email.match(regex)) {
-            return contact;
-          }
+          return contact.name.match(regex) || contact.email.match(regex);
         }),
       };
     case UPDATE_CONTACT:
       return {
         ...state,
         contacts: state.contacts.map((contact) => {
-          return contact.id === action.payload.id ? action.payload : contact;
+          return contact._id === action.payload._id ? action.payload : contact;
         }),
+        loading: false,
       };
     default:
       return state;

@@ -1,26 +1,37 @@
-import React, { useContext, Fragment } from "react";
+import React, { useContext, Fragment, useEffect } from "react";
 import ContactContext from "../../context/contact/contactContext";
 import ContactItem from "./ContactItem";
+import Spinner from "../layout/spinner/Spinner";
 import "./Contacts.css";
 
 const Contacts = () => {
   const contactContext = useContext(ContactContext);
 
-  const { contacts, filtered } = contactContext;
+  const { contacts, filtered, loadContacts, loading } = contactContext;
+  useEffect(() => {
+    loadContacts();
+    // eslint-disable-next-line
+  }, []);
 
-  if (contacts.length === 0) {
-    return <h3 className="contactPrompt">Enter a contact...</h3>;
+  if (contacts !== null && contacts.length === 0 && !loading) {
+    return <Fragment>Please enter some contacts</Fragment>;
   }
 
   return (
     <Fragment>
-      {filtered !== null
-        ? filtered.map((contact) => (
-            <ContactItem key={contact.id} contact={contact} />
+      {contacts !== null && !loading ? (
+        filtered !== null ? (
+          filtered.map((contact) => (
+            <ContactItem key={contact._id} contact={contact} />
           ))
-        : contacts.map((contact) => (
-            <ContactItem key={contact.id} contact={contact} />
-          ))}
+        ) : (
+          contacts.map((contact) => (
+            <ContactItem key={contact._id} contact={contact} />
+          ))
+        )
+      ) : (
+        <Spinner />
+      )}
     </Fragment>
   );
 };
