@@ -14,7 +14,7 @@ const Contacts = () => {
   }, []);
 
   if (contacts !== null && contacts.length === 0 && !loading) {
-    return <Fragment>Please enter some contacts</Fragment>;
+    return <div className="warn">Please enter some contacts</div>;
   }
 
   return (
