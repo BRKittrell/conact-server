@@ -4,7 +4,7 @@ import "./About.css";
 const About = () => {
   return (
     <Fragment>
-      <h1>ContactKeeper</h1>
+      <h1>Contacts</h1>
       <p>Developer: Adam Ross 2020</p>
       <p className="about">
         So, this is a full stack MERN app that I built in the early part of the
